@@ -1,0 +1,5 @@
+venv
+core/__pycache__/gemini_service.cpython-312.pyc
+core/__pycache__/utils.cpython-312.pyc
+core/__pycache__/validator.cpython-312.pyc
+core/__pycache__/openapi_parser.cpython-312.pyc

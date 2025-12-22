@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: Order Service
+  version: "1.0"
+paths:
+  /orders:
+    get:
+      summary: Get Order
+      responses:
+        200:
+          description: Order Details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderId:
+                    type: string
+                  userId:
+                    type: string
+                  totalAmount:
+                    type: number
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        productId:
+                          type: string
+                        quantity:
+                          type: integer
+                        price:
+                          type: number
+                      required:
+                        - productId
+                        - quantity
+                        - price
+                required:
+                  - orderId
+                  - userId
+                  - totalAmount
+                  - items

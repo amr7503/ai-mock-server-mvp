@@ -1,0 +1,7 @@
+streamlit
+google-generativeai
+openapi-core
+PyYAML
+jsonschema
+pydantic
+requests
