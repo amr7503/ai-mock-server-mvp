@@ -22,7 +22,7 @@ else:
         CONFIG = toml.load("config.toml")
         API_KEY = CONFIG.get("GEMINI_API_KEY")
 
-if not API_KEY:
+if not GEMINI_API_KEY:
     st.error("❌ Gemini API Key not found. Please set it in Streamlit Secrets or config.toml.")
 else:
     configure_gemini(GEMINI_API_KEY)
