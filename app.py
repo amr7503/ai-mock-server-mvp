@@ -9,8 +9,23 @@ from core.validator import validate_schema
 from core.metrics import add_metric, get_stats
 from core.rate_limiter import check_rate_limit
 
-CONFIG = toml.load("config.toml")
-configure_gemini(CONFIG["GEMINI_API_KEY"])
+# CONFIG = toml.load("config.toml")
+# configure_gemini(CONFIG["GEMINI_API_KEY"])
+
+GEMINI_API_KEY = None
+
+if "GEMINI_API_KEY" in st.secrets:
+    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+else:
+    import os
+    if os.path.exists("config.toml"):
+        CONFIG = toml.load("config.toml")
+        API_KEY = CONFIG.get("GEMINI_API_KEY")
+
+if not API_KEY:
+    st.error("❌ Gemini API Key not found. Please set it in Streamlit Secrets or config.toml.")
+else:
+    configure_gemini(GEMINI_API_KEY)
 
 st.set_page_config(page_title="AI Mock Server", layout="wide")
 
